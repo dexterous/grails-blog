@@ -9,3 +9,5 @@ $ cat >> .gitignore
 > /target
 > ^D
 $ git commit -m "Importing vanilla Grails app (withoug eclipse crap!)"
+$ grails install-plugin simple-blog
+$ git commit -m "Installing simple-blog plugin with depns"
