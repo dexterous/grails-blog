@@ -15,3 +15,19 @@ $ cat >> grails-app/conf/Config.groovy
 > grails.blog.author.evaluator = { request.remoteAddr }
 > ^D
 $ git commit -m "Configured simple-blog to use remote IP as posters ID"
+$ mkdir -p grails-app/domain/demo/blog/
+$ cat > grails-app/domain/demo/blog/Commenter.groovy
+> package demo.blog
+>
+> class Commenter {
+>   String addr;
+>   String toString() { addr }
+> }
+> ^D
+$ cat >> grails-app/conf/Config.groovy
+> import demo.blog.Commenter
+> grails.commentable.poster.evaluator = { Commenter.findByAddr(request.remoteAddr) ?: new Commenter(addr: request.remoteAddr).save() }
+> ^D
+$ git commit -m "Configured commentable plugin to use remote IP as commenter's ID
+> 
+> Had to create Commenter model as commentable require a persistent poster entity"

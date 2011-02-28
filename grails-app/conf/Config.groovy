@@ -87,3 +87,5 @@ log4j = {
 }
 
 grails.blog.author.evaluator = { request.remoteAddr }
+import demo.blog.Commenter
+grails.commentable.poster.evaluator = { Commenter.findByAddr(request.remoteAddr) ?: new Commenter(addr: request.remoteAddr).save() }
