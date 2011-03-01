@@ -1,6 +1,6 @@
 package demo.blog
 
-class Commenter {
+class RemoteAddr {
   String addr;
   String toString() { addr }
 }

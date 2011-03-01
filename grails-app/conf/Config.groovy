@@ -86,6 +86,6 @@ log4j = {
     warn   'org.mortbay.log'
 }
 
-grails.blog.author.evaluator = { request.remoteAddr }
-import demo.blog.Commenter
-grails.commentable.poster.evaluator = { Commenter.findByAddr(request.remoteAddr) ?: new Commenter(addr: request.remoteAddr).save() }
+import demo.blog.RemoteAddr
+grails.blog.author.evaluator = { RemoteAddr.findByAddr(request.remoteAddr) ?: new RemoteAddr(addr: request.remoteAddr).save() }
+grails.commentable.poster.evaluator = { RemoteAddr.findByAddr(request.remoteAddr) ?: new RemoteAddr(addr: request.remoteAddr).save() }
