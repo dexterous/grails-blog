@@ -31,3 +31,4 @@ $ cat >> grails-app/conf/Config.groovy
 $ git commit -m "Configured commentable plugin to use remote IP as commenter's ID
 > 
 > Had to create Commenter model as commentable require a persistent poster entity"
+$ git upgrade
